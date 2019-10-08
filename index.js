@@ -45,10 +45,11 @@ const server = http.createServer( (req, res) => {
 //        res.end(JSON.stringify(users));
 //    }
 
-    // Built file path (dimanic)
+
+    // Building the file path dimanic
     let filePath = path.join(
         __dirname, 
-        'public', 
+        'public',  //Here is where all the html and css live!!
         req.url === '/' ? "index.html" : req.url
     );
 
@@ -83,6 +84,7 @@ const server = http.createServer( (req, res) => {
                 if (err.code == 'ENOENT') {
                     //Page not found
                     fs.readFile(
+                        //This is gonna load an error page
                         path.join(__dirname, 'public', '404.html'),
                         (err, content) => {
                             res.writeHead(200, {'Content-Type':'text/html'});
@@ -94,7 +96,7 @@ const server = http.createServer( (req, res) => {
                     res.end(`Server Error: ${err.code}`)
                 }
             } else {
-                // Success
+                // Success for response
                 res.writeHead(200, {'Content-Type': contentType});
                 res.end(content, 'utf8') 
             }
