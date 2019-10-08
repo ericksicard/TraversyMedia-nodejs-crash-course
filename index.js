@@ -50,7 +50,7 @@ const server = http.createServer( (req, res) => {
     let filePath = path.join(
         __dirname, 
         'public',  //Here is where all the html and css live!!
-        req.url === '/' ? "index.html" : req.url
+        req.url === '/' ? 'index.html' : req.url
     );
 
     // Extention of the file
@@ -98,7 +98,7 @@ const server = http.createServer( (req, res) => {
             } else {
                 // Success for response
                 res.writeHead(200, {'Content-Type': contentType});
-                res.end(content, 'utf8') 
+                res.end(content, 'utf8'); 
             }
     });
 });
